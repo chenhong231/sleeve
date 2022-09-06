@@ -9,14 +9,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chenhong231/sleeve.git"
-  },
   "author": "warren",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/chenhong231/sleeve/issues"
-  },
-  "homepage": "https://github.com/chenhong231/sleeve#readme"
+  "license": "ISC"
 }
