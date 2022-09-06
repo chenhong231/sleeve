@@ -10,5 +10,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "warren",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenhong231/sleeve.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chenhong231/sleeve/issues"
+  },
+  "homepage": "https://github.com/chenhong231/sleeve#readme"
 }
