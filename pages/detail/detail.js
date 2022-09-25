@@ -1,4 +1,7 @@
 import { Spu } from "../../model/spu"
+import { ShoppingWay } from "../../core/enum"
+import { SaleExplain } from "../../model/sale-explain"
+import { getWindowHeightRpx } from "../../utils/system"
 
 
 Page({
@@ -7,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    showRealm: false
   },
 
   /**
@@ -16,8 +19,47 @@ Page({
   onLoad: async function (options) {
     const pid = options.pid
     const spu = await Spu.getDetail(pid)
+
+    const explain = await SaleExplain.getFixed()
+    const windowHeight = await getWindowHeightRpx()
+    const h = windowHeight - 100
+
     this.setData({
-      spu
+      spu,
+      explain,
+      h
+    })
+  },
+
+  onAddToCart(event) {
+    this.setData({
+      showRealm: true,
+      orderWay: ShoppingWay.CART
+    })
+  },
+
+  onBuy(event) {
+    this.setData({
+      showRealm: true,
+      orderWay: ShoppingWay.BUY
+    })
+  },
+
+  onGotoHome(event) {
+    wx.switchTab({
+      url: 'pages/home/home',
+    })
+  },
+
+  onGotoCart(event) {
+    wx.switchTab({
+      url: 'url',
+    })
+  },
+
+  onSpecChange(event) {
+    this.setData({
+      specs: event.detail
     })
   },
 

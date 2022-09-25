@@ -2,6 +2,7 @@ import {FenceGroup} from "../models/fence-group";
 import {Judger} from "../models/judger";
 import {Spu} from "../../model/spu";
 import {Cell} from "../models/cell";
+import {Cart} from "../../model/cart"
 
 
 Component({
@@ -13,7 +14,7 @@ Component({
     data: {
         judger: Object,
         previewImg: String,
-        // currentSkuCount: Cart.SKU_MIN_COUNT
+        currentSkuCount: Cart.SKU_MIN_COUNT
     },
 
     observers: {
@@ -67,8 +68,8 @@ Component({
                 this.triggerEvent('specchange', {
                     noSpec: Spu.isNoSpec(this.properties.spu),
                     skuIntact: this.data.judger.isSkuIntact(),
-                    //currentValues: this.data.judger.getCurrentValues(),
-                   // missingKeys: this.data.judger.getMissingKeys()
+                    currentValues: this.data.judger.getCurrentValues(),
+                    missingKeys: this.data.judger.getMissingKeys()
                 })
             }
         },
@@ -135,8 +136,7 @@ Component({
                     this.setStockStatus(sku.stock, currentCount)
                 }
             }
-        }
-        ,
+        },
 
         onCellTap(event) {
             const data = event.detail.cell
