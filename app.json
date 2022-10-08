@@ -66,6 +66,7 @@
     "l-counter": "/miniprogram_npm/lin-ui/counter/index",
     "s-counter": "/components/counter/index",
     "s-spu-preview-r": "/components/spu-preview-r/index",
-    "l-loading": "/miniprogram_npm/lin-ui/loading/index"
+    "l-loading": "/miniprogram_npm/lin-ui/loading/index",
+    "s-empty": "/components/empty/index"
   }
 }

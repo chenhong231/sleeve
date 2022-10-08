@@ -157,17 +157,15 @@ Component({
             this.bindTipData()
             this.bindFenceGroupData(judger.fenceGroup)
             this.triggerSpecEvent()
-        }
-        ,
+        },
 
-        // onBuyOrCart(event) {
-        //     if (Spu.isNoSpec(this.properties.spu)) {
-        //         this.shoppingNoSpec();
-        //     } else {
-        //         this.shoppingVarious();
-        //     }
-        // }
-        // ,
+        onBuyOrCart(event) {
+            if (Spu.isNoSpec(this.properties.spu)) {
+                this.shoppingNoSpec();
+            } else {
+                this.shoppingVarious();
+            }
+        },
 
         shoppingVarious() {
             const intact = this.data.judger.isSkuIntact();
@@ -181,13 +179,11 @@ Component({
                 return
             }
             this._triggerShoppingEvent(this.data.judger.getDeterminateSku())
-        }
-        ,
+        },
 
         shoppingNoSpec() {
             this._triggerShoppingEvent(this.getNoSpecSku())
-        }
-        ,
+        },
 
         getNoSpecSku() {
             return this.properties.spu.sku_list[0]

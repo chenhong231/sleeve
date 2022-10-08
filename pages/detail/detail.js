@@ -2,6 +2,8 @@ import { Spu } from "../../model/spu"
 import { ShoppingWay } from "../../core/enum"
 import { SaleExplain } from "../../model/sale-explain"
 import { getWindowHeightRpx } from "../../utils/system"
+import { Cart } from "../../model/cart"
+import { CartItem } from "../../model/cart-item"
 
 
 Page({
@@ -10,7 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showRealm: false
+    showRealm: false,
+    cartItemCount: 0
   },
 
   /**
@@ -29,6 +32,8 @@ Page({
       explain,
       h
     })
+
+    this.updateCartItemCount()
   },
 
   onAddToCart(event) {
@@ -60,6 +65,26 @@ Page({
   onSpecChange(event) {
     this.setData({
       specs: event.detail
+    })
+  },
+
+  onShopping(event) {
+    const chosenSku = event.detail.sku
+    const skuCount = event.detail.skuCount
+
+    if(event.detail.orderWay === ShoppingWay.CART) {
+      const cart = new Cart()
+      const cartItem = new CartItem(chosenSku, skuCount)
+      cart.addItem(cartItem)
+      this.updateCartItemCount()
+    }
+  },
+
+  updateCartItemCount() {
+    const cart = new Cart()
+    this.setData({
+      cartItemCount: cart.getCartItemCount(),
+      showRealm: false
     })
   },
 

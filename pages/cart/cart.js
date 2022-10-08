@@ -1,3 +1,5 @@
+import { Cart } from "../../model/cart"
+
 // pages/cart/cart.js
 Page({
 
@@ -5,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    cartItems: [],
+    isEmpty: false
   },
 
   /**
@@ -26,7 +29,37 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const cart = new Cart()
+    const cartItems = cart.getAllCartItemFromLocal().items;
 
+    if(cart.isEmpty()) {
+      this.empty()
+      return
+    }
+
+    this.setData({
+      cartItems
+    })
+    this.notEmpty()
+  },
+
+  empty() {
+    this.setData({
+      isEmpty: true,
+    })
+
+    wx.hideTabBarRedDot({
+      index: 2,
+    })
+  },
+
+  notEmpty() {
+    this.setData({
+      isEmpty: false
+    })
+    wx.showTabBarRedDot({
+      index: 2,
+    })
   },
 
   /**
